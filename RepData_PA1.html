@@ -361,7 +361,19 @@ A2 - Since we introduced 8 more days with 10766 steps each (10766 equals the ave
 
 <h3>Are there differences in activity patterns between weekdays and weekends?</h3>
 
-<h4><em>Sorry pals, no results for this topic.</em></h4>
+<ol>
+<li> Create a new factor variable in the dataset with two levels вЂ“ вЂњweekdayвЂќ and вЂњweekendвЂќ indicating whether a given date is a weekday or weekend day.</li>
+</ol>
+
+<pre><code class="r">    p=as.POSIXct(act$date)
+    p=weekdays(p)
+    wend&lt;-which(p %in% c(&quot;Saturday&quot;,&quot;Sunday&quot;))
+    p[wend]=c(&quot;weekend&quot;)
+    p[-wend]=c(&quot;weekday&quot;)
+    act$date=as.factor(p)
+</code></pre>
+
+<h4><em>Sorry pals, that&#39;s all.</em></h4>
 
 </body>
 
